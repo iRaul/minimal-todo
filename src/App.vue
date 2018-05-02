@@ -5,7 +5,11 @@
       <div class="mx-auto w-full md:w-1/2 py-8 px-4">
         
         <!-- Title -->
-        <h1 class="mb-6 tracking-wide text-center text-white"><span>MINIMAL</span> TO DO</h1>
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="tracking-wide text-white"><span>MINIMAL</span> TO DO</h1>
+
+          <img src="/src/assets/logo.svg" width="40" alt="">
+        </div>
 
         <!-- New Todo Input -->
         <input type="text"
@@ -18,13 +22,13 @@
         <ul class="list-reset">
           <transition-group name="fade">
             <li v-for="todo in todos" :key="todo.id"
-                class="py-4 px-2 mb-4 border-b border-grey-dark flex justify-between items-center todo__item">
+                class="py-6 px-2 border-b border-grey-darkest flex justify-between items-center relative todo__item">
               <div>
                 <input type="checkbox" :id="todo.id" class="cbx hidden" v-model="todo.completed">
                 <label :for="todo.id" class="text-xl cbx__child"></label>
                 <label :for="todo.id" class="cbx__lbl text-white" :class="{ completed: todo.completed }">{{ todo.title }}</label>
               </div>
-              <button v-on:click="removeTodo(todo)" type="button" class="flex items-center delete-button">
+              <button v-on:click="removeTodo(todo)" type="button" class="flex items-center delete-button absolute pin-r">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </button>
             </li>          
@@ -49,10 +53,6 @@ export default {
       todos: []
     }
   },
-  
-  created() {
-    this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-  },
 
   methods: {
     addTodo() {
@@ -62,15 +62,24 @@ export default {
           completed: false,
           id: this.todos.length
         })
-      }
-  
-      this.newTodo = '';
-      
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
+      }  
+      this.newTodo = '';      
     },
     removeTodo(todo) {
       this.todos.splice(this.todos.indexOf(todo), 1)
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos))
+    }
+  },
+
+  mounted() {
+    if(localStorage.getItem(STORAGE_KEY)) this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  },
+
+  watch: {
+    todos: {
+      handler() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
+      },
+      deep: true
     }
   }
 }
@@ -174,7 +183,7 @@ export default {
   // Fade In/Out Animation
   .fade-enter-active, 
   .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity .3s;
   }
   
   .fade-enter, 
@@ -190,6 +199,9 @@ export default {
           opacity: 1;
           visibility: visible;
         }
+      }
+      &:last-child {
+        border-bottom: none;
       }
     }
   }
