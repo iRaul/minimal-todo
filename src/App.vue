@@ -5,7 +5,7 @@
       <div class="mx-auto w-full md:w-1/2 py-8 px-4">
         
         <!-- Title -->
-        <h1 class="mb-6 tracking-wide text-center text-white">MINIMAL TO DO</h1>
+        <h1 class="mb-6 tracking-wide text-center text-white"><span>MINIMAL</span> TO DO</h1>
 
         <!-- New Todo Input -->
         <input type="text"
@@ -76,22 +76,28 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+  $c-primary: #1dd1a1;
+
+  // Global
+  body { font-family: 'Raleway', sans-serif; }
+
   // Title
-  h1 { font-family: 'Oswald', sans-serif; }
+  h1 { 
+    span { color: $c-primary; }  
+  }
 
   // Input
   input {
     transition: border-color .3s ease; 
     &:focus {
       outline: none;
-      border-color: #1dd1a1;
+      border-color: $c-primary;
     }
   }
 
   // Checkbox & Label
-  label { font-family: 'Open Sans', sans-serif; }
-
   .cbx__lbl {
     margin-left: 4px;
     vertical-align: middle;
@@ -101,7 +107,7 @@ export default {
     &:after {
       content: '';
       width: 0%; height: 2px;
-      background: #1dd1a1;
+      background: $c-primary;
       position: absolute;
       left: 0; top: 50%;
       display: block;
@@ -118,7 +124,7 @@ export default {
 
   .cbx:checked ~ .cbx__child {
     border-color: transparent;
-    background: #1dd1a1;
+    background: $c-primary;
     animation: jelly 0.6s ease;
   }
   
