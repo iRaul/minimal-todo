@@ -1,6 +1,6 @@
-# todo-app
+# Minimal To Do App ✔️
 
-> A Vue.js project
+> As I'm learning Vue.js I've built a simple/minimal to do app using Vue.js and Tailwind.css.
 
 ## Build Setup
 
