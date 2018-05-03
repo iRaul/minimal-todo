@@ -7,18 +7,22 @@
       <div class="mx-auto w-full md:w-1/2 py-8 px-4">
         
         <!-- Title -->
-        <div class="flex justify-between items-center mb-6">
-          <h1 class="tracking-wide text-white"><span>MINIMAL</span> TO DO</h1>
+        <div class="flex items-center mb-6">
+          <h1 class="tracking-wide text-white mr-6"><span>MINIMAL</span> TO DO</h1>
 
           <img src="/src/assets/logo.svg" width="40" alt="">
         </div>
 
         <!-- New Todo Input -->
-        <input type="text"
-              v-model="newTodo"
-              v-on:keyup.enter="addTodo"
-              placeholder="What needs to be done today?"
-              class="p-4 mb-4 w-full bg-transparent border-grey-light text-white border rounded">
+        <div class="input-wrapper relative">
+          <input type="text"
+                v-model="newTodo"
+                v-on:keyup.enter="addTodo"
+                placeholder="What needs to be done today?"
+                class="p-4 mb-4 w-full bg-transparent border-grey-light text-white border rounded">
+
+          <span class="text-guide text-grey-darker absolute text-xs">Press Enter</span>          
+        </div>
       
         <!-- To Do List -->    
         <ul class="list-reset">
@@ -117,11 +121,20 @@ export default {
   }
 
   // Input
-  input {
-    transition: border-color .3s ease; 
-    &:focus {
-      outline: none;
-      border-color: $c-primary;
+  .input-wrapper {
+    input {
+      transition: border-color .3s ease; 
+
+      &:focus {
+        outline: none;
+        border-color: $c-primary;      
+      }
+    }
+    
+    .text-guide {
+      right: 0;
+      bottom: -8px;
+      text-transform: uppercase;
     }
   }
 
