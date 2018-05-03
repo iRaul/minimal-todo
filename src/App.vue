@@ -10,7 +10,7 @@
         <div class="flex items-center mb-6">
           <h1 class="tracking-wide text-white mr-6"><span>MINIMAL</span> TO DO</h1>
 
-          <img src="/src/assets/logo.svg" class="invisible md:visible" width="40" alt="">
+          <img src="/src/assets/logo.svg" class="hidden md:block" width="40" alt="">
         </div>
 
         <!-- New Todo Input -->
