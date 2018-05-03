@@ -10,7 +10,7 @@
         <div class="flex items-center mb-6">
           <h1 class="tracking-wide text-white mr-6"><span>MINIMAL</span> TO DO</h1>
 
-          <img src="/src/assets/logo.svg" width="40" alt="">
+          <img src="/src/assets/logo.svg" class="invisible md:visible" width="40" alt="">
         </div>
 
         <!-- New Todo Input -->
@@ -36,7 +36,7 @@
               <div>
                 <input type="checkbox" :id="todo.id" class="cbx hidden" v-model="todo.completed">
                 <label :for="todo.id" class="text-xl cbx__child"></label>
-                <label :for="todo.id" class="cbx__lbl text-white" :class="{ completed: todo.completed }">{{ todo.title }}</label>
+                <label :for="todo.id" class="cbx__lbl text-white inline-block mt-1" :class="{ completed: todo.completed }">{{ todo.title }}</label>
               </div>
               <button v-on:click="removeTodo(todo)" type="button" class="flex items-center delete-button absolute pin-r">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
