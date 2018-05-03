@@ -18,10 +18,14 @@
           <input type="text"
                 v-model="newTodo"
                 v-on:keyup.enter="addTodo"
+                v-on:focus="show_guide = true"
+                v-on:blur="show_guide = false"
                 placeholder="What needs to be done today?"
                 class="p-4 mb-4 w-full bg-transparent border-grey-light text-white border rounded">
 
-          <span class="text-guide text-grey-darker absolute text-xs">Press Enter</span>          
+          <transition name="fade">
+            <span class="text-guide text-grey-darker absolute text-xs" v-show="show_guide">Press Enter</span>       
+          </transition>   
         </div>
       
         <!-- To Do List -->    
@@ -56,7 +60,8 @@ export default {
   data() {
     return {
       newTodo: '',
-      todos: []
+      todos: [],
+      show_guide: false
     }
   },
 
