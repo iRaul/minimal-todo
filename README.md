@@ -2,7 +2,7 @@
 
 > A simple/minimal to do app using Vue.js and Tailwind.css.
 
-## Build Setup
+## Build Setups
 
 ``` bash
 # install dependencies
