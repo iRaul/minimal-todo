@@ -4,13 +4,20 @@
 
 ## Build Setups
 
-``` bash
-# install dependencies
-npm install
+### Install ⚙️
 
-# serve with hot reload at localhost:8080
-npm run dev
+```
+npm install / yarn install
+```
 
-# build for production with minification
-npm run build
+### Start 🏃
+
+```
+npm run dev / yarn dev
+```
+
+### Build 😷
+
+```
+npm run build / yarn build
 ```
