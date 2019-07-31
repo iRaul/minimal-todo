@@ -2,6 +2,8 @@
 
 > A simple/minimal to do app using Vue.js and Tailwind.css.
 
+![Readme Image](./static/minimal.png)
+
 ## Build Setups
 
 ### Install ⚙️
